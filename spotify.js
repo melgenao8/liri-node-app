@@ -6,10 +6,10 @@
 //      The album that the song is from
 
 // DEFAULT SONG: "The Sign" by Ace of Base.
-if (!search) {
-    search = "spotify-this-song";
-}
-if (!term) {
-    term = "The Sign";
-}
+// if (!userSearch) {
+//     userSearch = "spotify-this-song";
+// }
+// if (!userInput) {
+//     userInput = "The Sign";
+// }
 //=======================================================================

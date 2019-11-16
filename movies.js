@@ -6,30 +6,13 @@ var axios = require("axios");
 var fs = require("fs");
 
 // 3. movie-this
-//      output following info in terminal
-//      Title of the movie.
-//      Year the movie came out.
-//      IMDB Rating of the movie.
-//      Rotten Tomatoes Rating of the movie.
-//      Country where the movie was produced.
-//      Language of the movie.
-//      Plot of the movie.
-//      Actors in the movie.
-
-// ?????????? Check if default movie has correct variables called ???????????????????
-function searchMovies(userInput) {
-    var movie = userInput;
-
-    // DEFAULT MOVIE: 'Mr. Nobody.'
-    if (!userSearch) {
-        userSearch = "movie-this";
-    }
-    if (!input) {
-        input = "Mr.Nobody";
-    }
 
 
-    var url = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short$apikey=trilogy";
+function searchMovies(userSearch) {
+    var movie = userSearch;
+
+
+    var url = "http://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=trilogy";
 
     axios.get(url).then(
         function (response) {
@@ -57,7 +40,16 @@ function searchMovies(userInput) {
             fs.appendFileSync('log.txt', "\r\n" + "----------------------------------" + "\r\n", 'utf8');
         }
     )
-
 }
 
+module.exports = searchMovies;
 
+//      output following info in terminal
+//      Title of the movie.
+//      Year the movie came out.
+//      IMDB Rating of the movie.
+//      Rotten Tomatoes Rating of the movie.
+//      Country where the movie was produced.
+//      Language of the movie.
+//      Plot of the movie.
+//      Actors in the movie.
