@@ -1,37 +1,33 @@
+var fs = require("fs");
+var axios = require("axios");
+var keys = require("./keys.js");
+var moment = require("moment");
 
 // 1. concert-this (Bands in Town Artist Events API)
 //      Name of the venue
 //      Venue location
 //      date of event (use moment to format "MM/DD/YY")
 
-var Concert = function () {
-    var divider = "\n------------------------------------------------------------\n\n";
-    // this.artist = '';
+function searchConcert(userSearch) {
+    var artist = userSearch;
+
     //findConcert = searches B.I.T. API
-    this.findConcert = function (concert) {
-        var URL = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp" + concert;
+    var url = "https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp";
+    // console.log(url);
+    axios.get(url).then(
+        function (response) {
+            // console.log(response.data);
+            for (var i = 0; i < response.data.length; i++) {
+                var show = response.data[i];
+                var date = moment(show.datetime).format("MM/DD/YY");
+                console.log(show.venue.city + "," + show.venue.region + "," + show.venue.name + "," + date);
+            }
+            // "Venue Name: " + ;
+            // "Venue location: " + ;
+            // "Event Date: "  + ; (use moment to format "MM/DD/YY")
 
-        axios.get(URL).then(function (response) {
-
-            // var jsonData = response.data;
-            var { data } = response;
-            console.log(data);
-            //         var showData = [
-            //             // "Venue Name: " + jsonData.____,
-            //             // "Venue location: " + jsonData.____,
-            //             // "Event Date: "  + jsonData.____" (use moment to format "MM/DD/YY")
-            //         ].join("\n\n");
-
-            //         // Append findConcert to log.txt
-            //         // print findConcert to console
-            //         fs.appendFile("log.txt"), findConcert + divider, function (err) {
-            //             if (err) throw err;
-            //             console.log(findConcert);
-            //         });
-            // });
-        });
-    }
+        }
+    )
 }
 
-var concert2 = new Concert();
-concert2.findConcert();
+module.exports = searchConcert;

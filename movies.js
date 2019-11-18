@@ -16,6 +16,7 @@ function searchMovies(userSearch) {
 
     axios.get(url).then(
         function (response) {
+            // console.log(response);
             console.log("-----------------------\n")
             console.log("Movie Title: " + response.data.Title);
             console.log("Year: " + response.data.Year);
