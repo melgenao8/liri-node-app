@@ -8,6 +8,7 @@ HOW THE APP WORKS
 1. Type in one of the following inputs in the command line:
 
 ```
+
 a) node liri.js spotify-this-song '<song name here>'
   - This command prompts the Spotify API, and outputs the following information to your terminal/bash window:
     -- Artist(s)
@@ -15,14 +16,17 @@ a) node liri.js spotify-this-song '<song name here>'
     -- A preview link of the song from Spotify
     -- The album that the song is from
   
+
   
-b) node liri.js concert-this <artist/band name here>
+b) node liri.js concert-this '<artist/band name here>'
   -This command prompts the Bands in Town API, and outputs the following information to your terminal/bash window:
     -- Name of the venue
     -- Venue location
     -- Date of the Event
-    
-    
+
+   - If no song is provided then Liri will default to "The Sign" by Ace of Base.
+   
+ 
 c) node liri.js movie-this '<movie name here>'
   -This command prompts the OMDB API, and outputs the following information to your terminal/bash window:
    -- Title of the movie.
@@ -33,6 +37,8 @@ c) node liri.js movie-this '<movie name here>'
    -- Language of the movie.
    -- Plot of the movie.
    -- Actors in the movie.
+
+   - If no movie is provided then Liri will default to "Mr.Nobody".
 
   
 d) node liri.js do-what-it-says
