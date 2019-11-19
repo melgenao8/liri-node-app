@@ -20,12 +20,21 @@ function searchConcert(userSearch) {
             for (var i = 0; i < response.data.length; i++) {
                 var show = response.data[i];
                 var date = moment(show.datetime).format("MM/DD/YY");
-                console.log(show.venue.city + "," + show.venue.region + "," + show.venue.name + "," + date);
-            }
-            // "Venue Name: " + ;
-            // "Venue location: " + ;
-            // "Event Date: "  + ; (use moment to format "MM/DD/YY")
 
+                console.log("-----------------------\n")
+                console.log("Artist: " + artist);
+                console.log("Location: " + show.venue.city + ", " + show.venue.region);
+                console.log("Venue Name: " + show.venue.name);
+                console.log("Concert Date: " + date);
+                console.log("-----------------------\n")
+
+                fs.appendFileSync('log.txt', "\r\n" + "CONCERT SEARCH LOG --------------" + "\r\n", 'utf8');
+                fs.appendFileSync('log.txt', + "Artist: " + artist + "\r\n", 'utf8');
+                fs.appendFileSync('log.txt', + "Location: " + show.venue.city + ", " + show.venue.region + "\r\n", 'utf8');
+                fs.appendFileSync('log.txt', + "Venue Name: " + show.venue.name + "\r\n", 'utf8');
+                fs.appendFileSync('log.txt', + "Concert Date: " + date + "\r\n", 'utf8');
+                fs.appendFileSync('log.txt', "\r\n" + "----------------------------------" + "\r\n", 'utf8');
+            }
         }
     )
 }
